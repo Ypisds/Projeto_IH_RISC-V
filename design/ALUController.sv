@@ -24,7 +24,16 @@ module ALUController (
     assign Operation[10] = ((ALUOp == 2'b01) && (Func3 == 3'b001)); // BNE
     assign Operation[11] = ((ALUOp == 2'b01) && (Func3 == 3'b100)); // BLT
     assign Operation[12] = ((ALUOp == 2'b01) && (Func3 == 3'b101)); // BGE
-    assign 
+    assign Operation[13] = ((ALUOp == 2'b11) && (opcode == 7'b1101111)); // JAL
+    assign Operation[14] = ((ALUOp == 2'b11) && (opcode == 7'b1100111)); // JALR
+    assign Operation[15] = ((ALUOp == 2'b11) && (opcode == 7'b0110111)); // LUI
+    assign Operation[16] = ((ALUOp == 2'b00) && (Func3 == 3'b010) && (opcode == 7'b0000011)); // LW
+    assign Operation[17] = ((ALUOp == 2'b00) && (Func3 == 3'b010) && (opcode == 7'b0100011)); // SW
+    assign Operation[18] = ((ALUOp == 2'b00) && (Func3 == 3'b000) && (opcode == 7'b0000011)); // LB
+    assign Operation[19] = ((ALUOp == 2'b00) && (Func3 == 3'b001) && (opcode == 7'b0000011)); // LH
+    assign Operation[20] = ((ALUOp == 2'b00) && (Func3 == 3'b100) && (opcode == 7'b0000011)); // LBU
+    assign Operation[21] = ((ALUOp == 2'b00) && (Func3 == 3'b000) && (opcode == 7'b0100011)); // SB
+    assign Operation[22] = ((ALUOp == 2'b00) && (Func3 == 3'b001) && (opcode == 7'b0100011)); // SH
   
       
 endmodule
