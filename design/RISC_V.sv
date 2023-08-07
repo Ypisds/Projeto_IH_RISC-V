@@ -24,7 +24,7 @@ module riscv #(
   logic [1:0] ALUop_Reg;
   logic [6:0] Funct7;
   logic [2:0] Funct3;
-  logic [3:0] Operation;
+    logic [25:0] Operation;
 
   Controller c (
       opcode,
