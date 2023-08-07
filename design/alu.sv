@@ -16,18 +16,27 @@ module alu#(
         begin
             case(Operation)
             26'b00000000000000000000000001: // OR
+                    ALUResult = SrcA | SrcB;
             26'b00000000000000000000000010: // ADD/ADDI
+                    ALUResult = SrcA + SrcB;
             26'b00000000000000000000000110: // SUB
+                    ALUResult = SrcA - SrcB;
             26'b00000000000000000000001000: // AND/ ANDI
+                    ALUResult = SrcA & SrcB;
             26'b00000000000000000000010000: // XOR
+                    ALUResult = SrcA ^ SrcB;
             26'b00000000000000000000100000: // SLT/SLTI
             26'b00000000000000000001000000: // SRAI
             26'b00000000000000000010000000: // SRLI
             26'b00000000000000000100000000: // SLLI
             26'b00000000000000001000000000: // BEQ
+                    ALUResult = (SrcA == SrcB)? 1 : 0; // equal
             26'b00000000000000010000000000: // BNE
+                    ALUResult = (SrcA == SrcB)? 0 : 1; // nequal
             26'b00000000000000100000000000: // BLT
+                    ALUResult = (SrcA < SrcB)? 1 : 0; // lower
             26'b00000000000001000000000000: // BGE
+                    ALUResult = (SrcA < SrcB)? 0 : 1; // greater or equal
             26'b00000000000010000000000000: // JAL
             26'b00000000000100000000000000: // JALR
             26'b00000000001000000000000000: // LUI
