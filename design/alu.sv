@@ -8,7 +8,7 @@ module alu#(
         input logic [DATA_WIDTH-1:0]    SrcA,
         input logic [DATA_WIDTH-1:0]    SrcB,
 
-        input logic [OPCODE_LENGTH-1:0]    Operation,
+                input logic [25:0]    Operation,
         output logic[DATA_WIDTH-1:0] ALUResult
         );
     
