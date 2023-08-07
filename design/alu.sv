@@ -11,7 +11,8 @@ module alu#(
                 input logic [25:0]    Operation,
         output logic[DATA_WIDTH-1:0] ALUResult
         );
-    
+
+        
         always_comb
         begin
             case(Operation)
@@ -28,8 +29,11 @@ module alu#(
             26'b00000000000000000000100000: // SLT/SLTI
                     ALUResult = (SrcA < SrcB)? 1 : 0;
             26'b00000000000000000001000000: // SRAI
+                    ALUResult = SrcA >>> SrcB;
             26'b00000000000000000010000000: // SRLI
+                    ALUResult = SrcA >> SrcB;
             26'b00000000000000000100000000: // SLLI
+                    ALUResult = SrcA << SrcB;
             26'b00000000000000001000000000: // BEQ
                     ALUResult = (SrcA == SrcB)? 1 : 0; // equal
             26'b00000000000000010000000000: // BNE
